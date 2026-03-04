@@ -1,0 +1,13 @@
+---
+import type { SiteConfig } from '../types'
+
+interface Props {
+  d: SiteConfig
+}
+const { d } = Astro.props
+---
+
+<footer>
+  <span class="footer-name">{d.authorName} · thibaudritzenthaler.dev · Photo : <a href="https://unkadth.myportfolio.com/">Chloé Garcia ↗</a></span>
+  <span class="footer-email">{d.social.email}</span>
+</footer>

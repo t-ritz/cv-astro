@@ -1,0 +1,26 @@
+---
+import SectionLabel from './SectionLabel.astro'
+import type { SiteConfig } from '../types'
+
+interface Props {
+  d: SiteConfig
+}
+const { d } = Astro.props
+---
+
+<section class="section" id="langues">
+  <SectionLabel
+    sectionKey="langues"
+    eyebrow={d.sections.langues.eyebrow}
+    title={d.sections.langues.title}
+  />
+  <div class="lang-list" data-languages>
+    {d.languages.map(lang => (
+      <div class="lang-entry" data-flag={lang.flag}>
+        <div class="lang-code">{lang.code}</div>
+        <div class="lang-name">{lang.name}</div>
+        <div class="lang-level">{lang.level}</div>
+      </div>
+    ))}
+  </div>
+</section>

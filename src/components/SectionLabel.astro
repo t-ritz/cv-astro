@@ -1,0 +1,12 @@
+---
+interface Props {
+  sectionKey: string
+  eyebrow: string
+  title: string
+}
+const { sectionKey, eyebrow, title } = Astro.props
+---
+
+<div class="section-label" data-section={sectionKey}>
+  <span>{eyebrow}</span>{title}
+</div>

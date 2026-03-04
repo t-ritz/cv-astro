@@ -1,0 +1,80 @@
+---
+interface Props {
+  title: string
+  description: string
+  lang: string
+  canonical?: string
+  ogImage?: string
+  person?: {
+    name: string
+    jobTitle: string
+    email: string
+    url: string
+    sameAs: string[]
+  }
+}
+
+const {
+  title,
+  description,
+  lang,
+  canonical = 'https://thibaudritzenthaler.dev',
+  ogImage = 'https://thibaudritzenthaler.dev/images/avatar.png',
+  person,
+} = Astro.props
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="profile" />
+  <meta property="og:url"         content={canonical} />
+  <meta property="og:title"       content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={ogImage} />
+  <meta property="og:locale"      content="fr_FR" />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={ogImage} />
+
+  <!-- Schema.org Person -->
+  {person && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": person.name,
+      "jobTitle": person.jobTitle,
+      "email": person.email,
+      "url": person.url,
+      "image": ogImage,
+      "sameAs": person.sameAs,
+    })} />
+  )}
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+<body>
+  <slot />
+  <!-- Astro 5 bundle le script TypeScript automatiquement -->
+  <script>
+    import { initI18n } from '../scripts/i18n'
+    initI18n()
+  </script>
+</body>
+</html>

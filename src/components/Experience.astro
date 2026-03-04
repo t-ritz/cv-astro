@@ -1,0 +1,45 @@
+---
+import SectionLabel from './SectionLabel.astro'
+import type { SiteConfig } from '../types'
+
+interface Props {
+  d: SiteConfig
+}
+const { d } = Astro.props
+---
+
+<section class="section" id="experience">
+  <SectionLabel
+    sectionKey="experience"
+    eyebrow={d.sections.experience.eyebrow}
+    title={d.sections.experience.title}
+  />
+  <div class="jobs" data-jobs>
+    {d.jobs.map((job, i) => (
+      <div class="job" style={`transition-delay:${i * 0.08}s`}>
+        <div>
+          <div class="job-period">{job.begin} · {job.end}</div>
+          <span class="job-contract">{job.contract}</span>
+        </div>
+        <div>
+          <div class="job-title">
+            <span class="job-title-inner">{job.occupation}</span>
+          </div>
+          <div class="job-company-line">
+            {job.companyLinks.map((link, j) => (
+              <span>
+                {j > 0 && ' · '}
+                <a href={link.url} target="_blank" rel="noopener">{link.name}</a>
+              </span>
+            ))}
+            · {job.location}
+          </div>
+          <div class="job-desc">{job.description}</div>
+          <div class="job-expand-hint" data-i18n="labels.hoverToRead">
+            {d.labels.hoverToRead}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

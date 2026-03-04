@@ -1,0 +1,218 @@
+{
+  "lang": "fr",
+  "siteTitle": "Thibaud Ritzenthaler",
+  "siteDescription": "CV de Thibaud Ritzenthaler",
+  "eyebrow": "Démographe & Développeur · Paris",
+  "authorName": "Thibaud Ritzenthaler",
+  "authorAvatar": "/images/avatar.png",
+  "authorDescription": "Né en 1998 · Diplômé au niveau master en démographie et en informatique, intéressé par la création de solutions pour accompagner la science ouverte dans le domaine de la démographie et des enquêtes quantitatives longitudinales.",
+  "resume": "/cv_Thibaud_Ritzenthaler.pdf",
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/thibaud-ritzenthaler-418b5914a",
+    "github": "https://github.com/thibaud-ritzenthaler/",
+    "orcid": "https://orcid.org/0009-0005-8746-3212/",
+    "email": "thibaud@ritzenthaler.eu"
+  },
+  "nav": {
+    "expertise": "Expertise",
+    "experience": "Expérience",
+    "formation": "Formation",
+    "publications": "Publications",
+    "langues": "Langues",
+    "activites": "Activités"
+  },
+  "sections": {
+    "expertise":     { "eyebrow": "Outils &",       "title": "Expertise"    },
+    "experience":    { "eyebrow": "Parcours",        "title": "Expérience"   },
+    "formation":     { "eyebrow": "Académique",      "title": "Formation"    },
+    "publications":  { "eyebrow": "Recherche",       "title": "Publications" },
+    "langues":       { "eyebrow": "Communication",   "title": "Langues"      },
+    "activites":     { "eyebrow": "Engagement",      "title": "Activités"    },
+    "loisirs":       { "eyebrow": "Temps libre",     "title": "Loisirs"      }
+  },
+  "labels": {
+    "downloadCV": "↓ CV PDF",
+    "hoverToRead": "Voir les détails",
+    "seeMore" : "Voir plus",
+    "seeLess" : "Réduire"
+  },
+  "expertise": ["R", "SQL", "Python", "React", "DDI", "Node.js", "PHP", "Docker", "DevOps"],
+  "jobs": [
+    {
+      "company": "INED",
+      "companyLinks": [
+        { "name": "INED", "url": "https://www.ined.fr/" }
+      ],
+      "location": "Paris, FR",
+      "begin": "Jui 2025",
+      "end": "Actuellement",
+      "contract": "CDD",
+      "occupation": "Conception, création et gestion d'outils informatiques pour les enquêtes démographiques",
+      "description": "Au sein du Service des Enquêtes et Sondages de l'Ined, conception, dévelopement et tests d'outils logiciels dédiés à la production de métadonées et à la création d'enquêtes démographiques, veille et promotion de la norme DDI, maintenance et évolution du site DataIned, liason avec différents acteurs partenaires au niveau de la mise à disposition des données et codévelopement de solutions dédiées pour les métadonnées."
+    },
+    {
+      "company": "GGP · INED",
+      "companyLinks": [
+        { "name": "GGP", "url": "https://www.ggp-i.org/" },
+        { "name": "INED", "url": "https://www.ined.fr/" }
+      ],
+      "location": "Paris, FR",
+      "begin": "Oct 2023",
+      "end": "1 an et 9 mois",
+      "contract": "CDD",
+      "occupation": "Mise à disposition des métadonnées d'une enquête internationale",
+      "description": "Dans l'équipe du DataLab de l'Ined et du Central Hub de GGP, mise à disposition des métadonnées pour les différents pays participant à l'enquête, participation à l'organisation du Central Hub, veille et promotion de la norme DDI, création de pipelines logiciels pour automatiser la production et les tests, maintenance de la base de données contextuelle de GGP."
+    },
+    {
+      "company": "INED",
+      "companyLinks": [
+        { "name": "INED", "url": "https://www.ined.fr/" }
+      ],
+      "location": "Paris, FR",
+      "begin": "Mai 2023",
+      "end": "3 mois",
+      "contract": "Stage",
+      "occupation": "Valorisation et évolution des données du DataLab",
+      "description": "Recensement et valorisation des données démographiques, documentation pour les évolutions en matière de bonnes pratiques, analyse et documentation pour les API. Création et documentation du style en SCSS."
+    },
+    {
+      "company": "Blackbird",
+      "companyLinks": [
+        { "name": "Blackbird", "url": "https://black.bird.eu/" }
+      ],
+      "location": "Strasbourg, FR",
+      "begin": "Oct 2020",
+      "end": "2 ans",
+      "contract": "Apprentissage",
+      "occupation": "Analyste Développeur Testeur Fullstack",
+      "description": "Analyse, conception et développement de solutions e-commerce fullstack. Gestion de la connexion entre ERP, CRM, PIM et site e-commerce via API REST et GraphQL."
+    },
+    {
+      "company": "Websurg, IRCAD",
+      "companyLinks": [
+        { "name": "Websurg, IRCAD", "url": "https://websurg.com/" }
+      ],
+      "location": "Strasbourg, FR",
+      "begin": "Sep 2019",
+      "end": "1 an",
+      "contract": "Apprentissage",
+      "occupation": "Analyste Développeur Testeur Web",
+      "description": "Création d'applications web internes : traitement d'images, machine learning, traitement de bases de données utilisateurs et interfaçage pour l'accueil des élèves."
+    },
+    {
+      "company": "INTM",
+      "companyLinks": [
+        { "name": "INTM", "url": "https://www.intm.fr/" }
+      ],
+      "location": "Strasbourg, FR",
+      "begin": "Avr 2018",
+      "end": "5 mois",
+      "contract": "Stage · CDD",
+      "occupation": "Analyste Développeur Testeur",
+      "description": "Analyse et développement d'un chatbot pour répondre aux questions administratives des employés avec Dialogflow."
+    }
+  ],
+  "education": [
+    {
+      "school": "IDUS, Université de Strasbourg",
+      "url": "https://idus.unistra.fr/",
+      "degree": "Master · Démographie",
+      "field": "",
+      "mention": "Mention Bien",
+      "startYear": 2022,
+      "endYear": 2024
+    },
+    {
+      "school": "CESI Strasbourg",
+      "url": "https://strasbourg.cesi.fr/",
+      "degree": "Titre niv. 7 · Manager en architecture et applications logicielles des systèmes d’information",
+      "field": "Niveau master, Option expert développement",
+      "mention": "",
+      "startYear": 2020,
+      "endYear": 2022
+    },
+    {
+      "school": "IUT Robert Schumann",
+      "url": "https://iutrs.unistra.fr/",
+      "degree": "Licence Pro · Applications Distribuées",
+      "field": "Conception et Développement d'Applications Distribuées",
+      "mention": "Mention Assez Bien",
+      "startYear": 2019,
+      "endYear": 2020
+    },
+    {
+      "school": "IUT Robert Schumann",
+      "url": "https://iutrs.unistra.fr/",
+      "degree": "DUT · Informatique",
+      "field": "",
+      "mention": "",
+      "startYear": 2016,
+      "endYear": 2019
+    },
+    {
+      "school": "Lycée Marguerite Yourcenar",
+      "url": "http://www.lyc-yourcenar-erstein.site.ac-strasbourg.fr/",
+      "degree": "Baccalauréat Scientifique",
+      "field": "Lycée Marguerite Yourcenar, Erstein",
+      "mention": "Maths · Section Européenne Allemand · Option Latin",
+      "startYear": 2014,
+      "endYear": 2016
+    }
+  ],
+  "publications": [
+    {
+      "date": "Déc 2024",
+      "title": "L'étude internationale GGP, les enquêtes Erfi et leur documentation au standard DDI",
+      "venue": "Ritzenthaler, T. · Data-SHS 2024",
+      "url": "http://hdl.handle.net/20.500.12204/4GcKsJMBmeWvnDEMV_Vn",
+      "description": "Cette présentation illustre les efforts pour documenter et standardiser les enquêtes du programme GGP, avec un focus sur l'enquête française Erfi 2."
+    },
+    {
+      "date": "Déc 2024",
+      "title": "Processing cross-national longitudinal panel surveys to document rich metadata using automation and open standards",
+      "venue": "Ritzenthaler, T. · EDDI 2024",
+      "url": "http://hdl.handle.net/20.500.12204/0Gfor5MBmeWvnDEMLPXl",
+      "description": "This work focuses on the automation and application of open standards to improve the processing of cross-national longitudinal panel surveys."
+    },
+    {
+      "date": "Nov 2024",
+      "title": "Making Data Comparable: Lessons learned from the Generations and Gender Programme",
+      "venue": "Ritzenthaler, T., Grünwald, O. · Censuses, surveys and data harmonisation in Europe",
+      "url": "http://hdl.handle.net/20.500.12204/9EQZZJMBGHEcdMY0SAEd",
+      "description": "Explorations des avancées dans l'harmonisation des données du GGP : coordination centralisée, traitement des métadonnées, principes FAIR."
+    },
+    {
+      "date": "Juin 2024",
+      "title": "How comparable are the cross-national surveys in the Generations and Gender Survey Round II?",
+      "venue": "Connolly, A., Ritzenthaler, T., Grünwald, O., Caporali, A. · EPC 2024",
+      "url": "http://hdl.handle.net/20.500.12204/F9j5JZABacEniQevZDuB",
+      "description": "Examination of compliance to the baseline questionnaire in the second round of the GGS and whether comparability has improved."
+    }
+  ],
+  "languages": [
+    { "flag": "🇫🇷", "code": "FR", "name": "Français",  "level": "Langue maternelle" },
+    { "flag": "🇬🇧", "code": "EN", "name": "Anglais",   "level": "C1 · TOEIC 980 · Fluid Written & Spoken" },
+    { "flag": "🇩🇪", "code": "DE", "name": "Allemand",  "level": "B1 · Gesprochen und geschrieben in Alltagssprache" }
+  ],
+  "activities": [
+    {
+      "name": "Un Effort Pour Un Réconfort",
+      "url": "https://fr-fr.facebook.com/uneffortpourunreconfort/",
+      "position": "Membre fondateur\nVice-président",
+      "description": "Association caritative de lutte contre le cancer et les maladies graves"
+    },
+    {
+      "name": "On s'fait une toile sur RBS",
+      "url": "https://onsfaitunetoile.fr/",
+      "position": "Chroniqueur\nAnimateur · Producteur",
+      "description": "Émission sur le cinéma sur une radio locale"
+    },
+    {
+      "name": "Tengu Ryu Karaté-do",
+      "url": "http://shinkyuudojo.free.fr/",
+      "position": "Praticant hebdomadaire\n5ème Ryu",
+      "description": "Shin'Kyuu Dojo"
+    }
+  ],
+  "hobbies": ["Vélo", "Photographie", "Cinéma", "Jeux vidéo", "Natation"]
+}

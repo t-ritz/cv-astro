@@ -1,0 +1,38 @@
+---
+import type { SiteConfig } from '../types'
+
+interface Props {
+  d: SiteConfig
+}
+const { d } = Astro.props
+---
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow" data-i18n="eyebrow">{d.eyebrow}</div>
+    <h1 class="hero-name">
+      <span class="mark">Thibaud</span>
+      <span class="line2">Ritzenthaler</span>
+    </h1>
+    <p class="hero-bio" data-i18n="authorDescription">{d.authorDescription}</p>
+    <div class="hero-links">
+      <a class="ghost-link" href={d.social.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+      <a class="ghost-link" href={d.social.github}   target="_blank" rel="noopener">GitHub</a>
+      <a class="ghost-link" href={d.social.orcid}    target="_blank" rel="noopener">ORCID</a>
+      <a class="ghost-link" href={`mailto:${d.social.email}`}>Email</a>
+      <a class="cta" href={d.resume} target="_blank" rel="noopener" data-i18n="labels.downloadCV">
+        {d.labels.downloadCV}
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-avatar">
+    <img
+      src={d.authorAvatar}
+      alt={d.authorName}
+      width="220"
+      height="220"
+      onerror="this.style.background='linear-gradient(135deg,#0094d6,#00356d)';this.style.aspectRatio='3/4';this.removeAttribute('src')"
+    />
+  </div>
+</div>

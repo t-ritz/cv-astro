@@ -1,0 +1,34 @@
+---
+import SectionLabel from './SectionLabel.astro'
+import type { SiteConfig } from '../types'
+
+interface Props {
+  d: SiteConfig
+}
+const { d } = Astro.props
+
+const VISIBLE = 3
+const hasMore = d.publications.length > VISIBLE
+---
+
+<section class="section" id="publications">
+  <SectionLabel
+    sectionKey="publications"
+    eyebrow={d.sections.publications.eyebrow}
+    title={d.sections.publications.title}
+  />
+  <div class="pub-list" data-publications></div>
+  <div data-pub-more-wrapper>
+    {hasMore && (
+      <button
+        class="pub-more-btn"
+        data-pub-toggle
+        data-label-more={d.labels.seeMore}
+        data-label-less={d.labels.seeLess}
+      >
+        <span class="pub-more-arrow">▾</span>
+        <span class="pub-more-label">{d.labels.seeMore}</span>
+      </button>
+    )}
+  </div>
+</section>

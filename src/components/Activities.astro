@@ -1,0 +1,30 @@
+---
+import SectionLabel from './SectionLabel.astro'
+import type { SiteConfig } from '../types'
+
+interface Props {
+  d: SiteConfig
+}
+const { d } = Astro.props
+---
+
+<section class="section" id="activites">
+  <SectionLabel
+    sectionKey="activites"
+    eyebrow={d.sections.activites.eyebrow}
+    title={d.sections.activites.title}
+  />
+  <div class="act-list" data-activities>
+    {d.activities.map(act => (
+      <div class="act-entry">
+        <div class="act-pos">{act.position}</div>
+        <div>
+          <div class="act-name">
+            <a href={act.url} target="_blank" rel="noopener">{act.name} ↗</a>
+          </div>
+          <div class="act-desc">{act.description}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+import SectionLabel from './SectionLabel.astro'
+import type { SiteConfig } from '../types'
+
+interface Props {
+  d: SiteConfig
+}
+const { d } = Astro.props
+const doubled = [...d.expertise, ...d.expertise]
+---
+
+<section class="section" id="expertise">
+  <SectionLabel
+    sectionKey="expertise"
+    eyebrow={d.sections.expertise.eyebrow}
+    title={d.sections.expertise.title}
+  />
+  <div class="expertise-track-wrapper">
+    <div class="expertise-track" data-expertise>
+      {doubled.map(tech => (
+        <div class="expertise-item">
+          <span class="tech-name">{tech}</span>
+          <span class="dot"></span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

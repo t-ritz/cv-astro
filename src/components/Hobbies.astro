@@ -1,0 +1,102 @@
+---
+import SectionLabel from './SectionLabel.astro'
+import type { SiteConfig } from '../types'
+
+interface Props {
+  d: SiteConfig
+}
+const { d } = Astro.props
+---
+
+<section class="section" id="loisirs">
+  <SectionLabel
+    sectionKey="loisirs"
+    eyebrow={d.sections.loisirs.eyebrow}
+    title={d.sections.loisirs.title}
+  />
+  <div class="hobby-list" data-hobbies>
+    {d.hobbies.map(h => <span class="hobby">{h}</span>)}
+  </div>
+</section>
+
+<script>
+  let cleanup: (() => void) | null = null
+
+  function initHobbies() {
+    // Nettoyer l'instance précédente avant tout
+    if (cleanup) { cleanup(); cleanup = null }
+
+    const list = document.querySelector<HTMLElement>('[data-hobbies]')
+    if (!list) return
+
+    const items = () => [...list.querySelectorAll<HTMLElement>('.hobby')]
+    let queue: number[] = []
+    let timer: ReturnType<typeof setInterval> | null = null
+
+    function shuffle(arr: number[]): number[] {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]]
+      }
+      return arr
+    }
+
+    function nextIndex(len: number): number {
+      if (!queue.length) queue = shuffle([...Array(len).keys()])
+      return queue.pop()!
+    }
+
+    function tick() {
+      const els = items()
+      if (!els.length) return
+      els.forEach(el => el.classList.remove('hobby--lit'))
+      els[nextIndex(els.length)].classList.add('hobby--lit')
+    }
+
+    function start() {
+      if (timer) clearInterval(timer)
+      tick()
+      timer = setInterval(tick, 900)
+    }
+
+    function stop() {
+      if (timer) { clearInterval(timer); timer = null }
+      items().forEach(el => el.classList.remove('hobby--lit'))
+    }
+
+    const onMouseover = (e: Event) => {
+      const target = (e.target as HTMLElement).closest<HTMLElement>('.hobby')
+      if (!target) return
+      stop()
+      items().forEach(el => el.classList.remove('hobby--lit'))
+      target.classList.add('hobby--lit')
+    }
+
+    const onMouseleave = () => start()
+
+    list.addEventListener('mouseover', onMouseover)
+    list.addEventListener('mouseleave', onMouseleave)
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) start(); else stop() })
+    }, { threshold: 0.3 })
+
+    const section = list.closest('section')
+    if (section) io.observe(section); else start()
+
+    // Exposer le cleanup pour la prochaine init
+    cleanup = () => {
+      stop()
+      list.removeEventListener('mouseover', onMouseover)
+      list.removeEventListener('mouseleave', onMouseleave)
+      io.disconnect()
+    }
+  }
+
+  initHobbies()
+
+  const hobbiesEl = document.querySelector('[data-hobbies]')
+  if (hobbiesEl) {
+    new MutationObserver(() => initHobbies()).observe(hobbiesEl, { childList: true })
+  }
+</script>

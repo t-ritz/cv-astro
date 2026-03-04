@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro'
+import LangSwitcher from '../components/LangSwitcher.astro'
+import Hero from '../components/Hero.astro'
+import Expertise from '../components/Expertise.astro'
+import Experience from '../components/Experience.astro'
+import Education from '../components/Education.astro'
+import Publications from '../components/Publications.astro'
+import Languages from '../components/Languages.astro'
+import Activities from '../components/Activities.astro'
+import Hobbies from '../components/Hobbies.astro'
+import Footer from '../components/Footer.astro'
+import fr from '../../data/i18n/fr.json'
+import type { SiteConfig } from '../types'
+
+// Le HTML est rendu en FR (SSG), le client switche via i18n.ts
+const d = fr as SiteConfig
+const siteUrl = 'https://thibaudritzenthaler.dev'
+---
+<Base
+  title="Thibaud Ritzenthaler — Démographe & Développeur"
+  description="CV de Thibaud Ritzenthaler, démographe et développeur basé à Paris. Spécialisé en science ouverte, métadonnées DDI, R, Python, React."
+  lang={d.lang}
+  canonical={siteUrl}
+  ogImage={`${siteUrl}/images/avatar.png`}
+  person={{
+    name: d.authorName,
+    jobTitle: "Démographe & Développeur",
+    email: d.social.email,
+    url: siteUrl,
+    sameAs: [d.social.linkedin, d.social.github, d.social.orcid],
+  }}
+>
+  <LangSwitcher />
+  <div class="page">
+    <Hero d={d} />
+    <Expertise d={d} />
+    <Experience d={d} />
+    <Education d={d} />
+    <Publications d={d} />
+    <Languages d={d} />
+    {//<Activities d={d} />}
+    <Hobbies d={d} />
+    <Footer d={d} />
+  </div>
+</Base>

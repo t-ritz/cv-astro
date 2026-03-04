@@ -1,0 +1,32 @@
+---
+import SectionLabel from './SectionLabel.astro'
+import type { SiteConfig } from '../types'
+
+interface Props {
+  d: SiteConfig
+}
+const { d } = Astro.props
+---
+
+<section class="section" id="formation">
+  <SectionLabel
+    sectionKey="formation"
+    eyebrow={d.sections.formation.eyebrow}
+    title={d.sections.formation.title}
+  />
+  <div class="edu-list" data-education>
+    {d.education.map((edu, i) => (
+      <div class="edu-entry" style={`transition-delay:${i * 0.07}s`}>
+        <div class="edu-years">{edu.startYear} – {edu.endYear}</div>
+        <div>
+          <div class="edu-degree">{edu.degree}</div>
+          <div class="edu-field">{edu.field}</div>
+          <a class="edu-school" href={edu.url} target="_blank" rel="noopener">
+            {edu.school} ↗
+          </a>
+          {edu.mention && <div class="edu-mention">{edu.mention}</div>}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
