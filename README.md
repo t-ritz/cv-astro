@@ -1,97 +1,136 @@
 # cv-astro
 
-CV de Thibaud Ritzenthaler — construit avec [Astro](https://astro.build).
+CV of **Thibaud Ritzenthaler** — Demographer & Developer, Paris.
+
+Built with [Astro 5](https://astro.build), vanilla CSS, no UI framework.
+
+→ [thibaudritzenthaler.dev](https://thibaudritzenthaler.dev)
+
+---
 
 ## Stack
 
-- **Astro 4** — génération statique
-- **CSS vanilla** — zéro framework UI
-- **i18n** — FR / EN / DE via JSON, détection auto + switcher client-side
-- **Zéro JS framework** — animations CSS + IntersectionObserver natif
+| | |
+|---|---|
+| **Astro 5** | Static site generation (SSG), zero JS by default |
+| **Vanilla CSS** | Custom design system, no Tailwind or Bootstrap |
+| **TypeScript** | i18n script and shared types |
+| **Homemade i18n** | FR / EN / DE, auto-detection + client-side switcher |
+
+---
 
 ## Structure
 
 ```
 cv-astro/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          ← automatic GitHub Pages deployment
 ├── data/
 │   └── i18n/
-│       ├── fr.json        ← données FR (source de vérité)
-│       ├── en.json        ← données EN
-│       └── de.json        ← données DE
+│       ├── fr.json             ← FR source of truth
+│       ├── en.json             ← EN translation
+│       └── de.json             ← DE translation
 ├── public/
+│   ├── data/                   ← JSON files copied automatically at build
 │   ├── images/
-│   │   └── avatar.png     ← photo (à placer ici)
+│   │   └── avatar.png          ← profile picture
 │   ├── styles/
-│   │   └── global.css     ← tout le CSS
-│   ├── scripts/
-│   │   └── main.js        ← switcher i18n + scroll animations
+│   │   └── global.css          ← all CSS
 │   └── cv_Thibaud_Ritzenthaler.pdf
-├── src/
-│   ├── layouts/
-│   │   └── Base.astro
-│   └── pages/
-│       └── index.astro    ← page unique (SSG)
-├── astro.config.mjs
-└── package.json
+└── src/
+    ├── components/
+    │   ├── Activities.astro
+    │   ├── Education.astro
+    │   ├── Experience.astro
+    │   ├── Expertise.astro     ← marquee ticker
+    │   ├── Footer.astro
+    │   ├── Hero.astro
+    │   ├── Hobbies.astro       ← random fairy-light animation
+    │   ├── Languages.astro     ← flag cards
+    │   ├── LangSwitcher.astro
+    │   ├── Publications.astro  ← progressive display (show more)
+    │   └── SectionLabel.astro
+    ├── layouts/
+    │   └── Base.astro          ← HTML, SEO metadata, og:*, schema.org
+    ├── pages/
+    │   └── index.astro         ← all components assembled
+    ├── scripts/
+    │   └── i18n.ts             ← language detection, fetch, renderCV()
+    └── types.ts                ← shared TypeScript interfaces
 ```
 
-## Démarrage rapide
+---
+
+## Getting started
 
 ```bash
-# Installer les dépendances
 npm install
-
-# Développement
-npm run dev
-
-# Build production
-npm run build
-
-# Prévisualiser le build
-npm run preview
+npm run dev      # → http://localhost:4321
+npm run build    # → dist/ folder
+npm run preview  # preview the build
 ```
 
-## Ajouter / modifier du contenu
+---
 
-Tout le contenu est dans `data/i18n/*.json`.  
-Modifier un fichier JSON suffit — aucune recompilation nécessaire en dev.
+## Editing content
 
-### Ajouter une expérience (exemple FR)
+All content lives in `data/i18n/*.json` — single source of truth.  
+An Astro hook automatically copies these files to `public/data/` on dev start and at build time.
+
+> ⚠️ Never edit `public/data/` directly — these files are overwritten on every build.
+
+### Example — adding a job entry
 
 ```json
 // data/i18n/fr.json → "jobs"
 {
-  "company": "Nom de l'entreprise",
-  "companyLinks": [{ "name": "Nom", "url": "https://..." }],
-  "location": "Ville, FR",
+  "company": "Company name",
+  "companyLinks": [{ "name": "Name", "url": "https://..." }],
+  "location": "City, FR",
   "begin": "Jan 2025",
-  "end": "Actuellement",
-  "contract": "CDI",
-  "occupation": "Titre du poste",
-  "description": "Description du poste..."
+  "end": "Present",
+  "contract": "Permanent",
+  "occupation": "Job title",
+  "description": "Description..."
 }
 ```
 
-## i18n — comment ça marche
+Apply the same change in `en.json` and `de.json` for translations.
 
-1. Au chargement, `main.js` détecte la langue via `localStorage` puis `navigator.language`
-2. Il charge le JSON correspondant depuis `/data/{lang}.json`
-3. Il réhydrate le DOM sans rechargement de page
-4. La langue choisie est mémorisée dans `localStorage`
+---
 
-> **Note** : le HTML initial est rendu en FR côté serveur (SSG).  
-> Si tu veux que Google indexe les 3 langues, envisage des routes `/en` et `/de` générées statiquement (voir Astro i18n routing).
+## i18n
 
-## Déploiement
+The HTML is rendered in **FR at build time** (SSG). On the client, `i18n.ts`:
 
-Compatible avec Netlify, Vercel, GitHub Pages, ou n'importe quel hébergement statique.
+1. Detects the language via `localStorage` then `navigator.language`
+2. Fetches `/data/{lang}.json`
+3. Re-hydrates the entire DOM without a page reload
+4. Stores the choice in `localStorage`
+
+> Google only indexes the FR version. For full multilingual indexing, static routes `/en` and `/de` would be needed — see [Astro i18n routing](https://docs.astro.build/en/guides/internationalization/).
+
+---
+
+## Deployment
+
+### GitHub Pages (automatic)
+
+Every push to `main` triggers the `.github/workflows/deploy.yml` workflow, which builds and deploys automatically.
+
+Enable in **Settings → Pages → Source: GitHub Actions**.
+
+### Other static hosts
+
+Compatible with Netlify, Vercel, Cloudflare Pages, or any static server.
 
 ```bash
 npm run build
-# → dossier dist/ prêt à déployer
+# → upload the dist/ folder
 ```
 
-Pour cPanel (comme l'ancien `.cpanel.yml`) :
+### cPanel
 
 ```yaml
 # .cpanel.yml
