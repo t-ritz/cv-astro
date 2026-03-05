@@ -15,7 +15,7 @@ function syncI18nFiles() {
 }
 
 export default defineConfig({
-  site: 'https://thibaudritzenthaler.dev',
+  site: 'https://ritzenthaler.eu',
   output: 'static',
 
   integrations: [

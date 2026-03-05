@@ -4,7 +4,7 @@ CV of **Thibaud Ritzenthaler** — Demographer & Developer, Paris.
 
 Built with [Astro 5](https://astro.build), vanilla CSS, no UI framework.
 
-→ [thibaudritzenthaler.dev](https://thibaudritzenthaler.dev)
+→ [ritzenthaler.eu](https://ritzenthaler.eu)
 
 ---
 
